@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: tap-vui
+    runtime: node
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: node server/src/app.js
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /opt/render/project/src/data
+    healthCheckPath: /api/health
